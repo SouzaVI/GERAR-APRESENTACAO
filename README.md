@@ -1,4 +1,5 @@
-# GERAR-APRESENTACAO
+# PlUG IN GERAÇÃO DE APRESENTAÇÃO
+## CONTEXTUALIZAÇÃO
 A criação deste plugin exclusivo, compatível com o QGIS versão 3.28 e versões posteriores, surgiu como uma resposta direta à demanda por otimização na rotina de geração de apresentações de mapas de fertilidade no Departamento de Geoprocessamento da Terram Soluções Agronômicas.
 
 O desafio central enfrentado nesse contexto diz respeito à manipulação de arquivos no formato *DTU, que contêm informações detalhadas sobre os atributos de fertilidade interpolados em uma determinada região geográfica.
