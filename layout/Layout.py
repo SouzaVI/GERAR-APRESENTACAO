@@ -404,6 +404,11 @@ class GerarApresentacao:
 
 
         def __return_dir__(directory_file_sst:str):
+         #-----------------------------------------------------------------------------
+         # função que recebe uma string directory_file_sst como argumento e retorna uma versão modificada dessa string.
+         # Parâmetros: directory_file_sst (string), Esta é a string que a função recebe como entrada. Presumivelmente, deve conter um caminho de diretório que pode usar barras invertidas (\) ou barras normais (/) como separadores.
+         # Retorno:  função retorna uma string que representa o diretório pai do caminho especificado em directory_file_sst. Isso significa que ele remove o último elemento (geralmente um nome de arquivo) do caminho fornecido e retorna apenas o caminho do diretório que o contém.
+         #------------------------------------------------------------------------------
             if "\\" in directory_file_sst:
                 temp_list = directory_file_sst.split("\\")
                 temp_sep = "\\"
@@ -421,6 +426,11 @@ class GerarApresentacao:
         print(__return_dir__('C:/geoprocessamento/FERTILIDADE'))
 
         def __create_folder_structure__(dir_sst, df_temp, my_zip_memory):
+        #----------------------------------------------------------------
+        # a função que cria uma estrutura de diretórios, extrai arquivos de um objeto ZIP para essa estrutura de diretórios e retorna o diretório onde os arquivos foram extraídos.
+        # Parâmetros: dir_sst, df_temp, my_zip_memory 
+        # Retorno: A função retorna uma string que representa o diretório onde os arquivos do objeto my_zip_memory foram extraídos.
+         #----------------------------------------------------------------
             temp = __return_dir__(dir_sst)
             if "\\" in dir_sst:
                 temp_sep = "\\"
@@ -431,9 +441,7 @@ class GerarApresentacao:
             my_zip_memory.extractall(diretorio)
             return diretorio
 
-        #Colocar a opção para usuário caso ele nao queira os arquivos compactados.
-
-        #Sugestão aramzenar os arquivos na pasta temporário de adiciona-los no no gpk, posteriomente apaga a pasta temporaria.
+        
 
         def descompatar_sst(dados):
             dados_sst = zipfile.ZipFile(dados)
