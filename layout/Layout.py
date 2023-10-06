@@ -224,15 +224,19 @@ class GerarApresentacao:
         import pandas as pd
         from os import path
         import uuid
-        #from IPython.display import clear_output
         import os
-       
+        #-------------------------------------------------------------------------------------------------
+        # Retorna: executar função de descompactação de DTU, Função implementada para o botão pushButtonDtu
+        # Parâmetros: __get_list_files__(diretorio, list_extensions)
+        #-------------------------------------------------------------------------------------------------
 
         def __get_list_files__(diretorio, list_extensions):
-        #---------------------------------------------------
-        # Retorna uma lista com todos os aquivos da pasta e sub
-        # pastas de acardo com o parametro list_extensions.
-        #-----------------------------------------------------
+         
+        #---------------------------------------------------------------------------------
+        # Essa função, chamada __get_list_files__, tem a finalidade de listar arquivos com extensões específicas em um diretório e suas subpastas recursivamente.
+        # Parâmetros: Diretorio (O diretório inicial onde a busca de arquivos será realizada)  e list_extensions (Uma lista de extensões de arquivo que você deseja procurar)
+        # Retorna: retorna a lista lst_dir, que contém os caminhos de todos os arquivos encontrados no diretório e suas subpastas.
+        #---------------------------------------------------------------------------------
             lst_dir = []
             tot = 0
             subpastas =[]
@@ -258,6 +262,11 @@ class GerarApresentacao:
                 return lst_dir
 
         def __create_folder__(my_dir:str):
+         #---------------------------------------------------------
+         # tem a finalidade de criar uma estrutura de diretórios em um caminho específico, onde os diretórios são definidos com base na string fornecida como my_dir
+         # Parâmetros :  my_dir, que é uma string representando o caminho do diretório que você deseja criar.
+         # Retorna: Após a conclusão do loop, a estrutura de diretórios definida pelo caminho my_dir foi criada, com cada diretório individual criado conforme necessário.
+         #--------------------------------------------------------
             path = my_dir
             new_path=''
             if not os.path.isdir(path):
