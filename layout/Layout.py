@@ -281,12 +281,20 @@ class GerarApresentacao:
                             os.mkdir(new_path)
 
         def __create_temp_folder__(my_strig:str):
+         #----------------------------------------------
+         #  cria uma pasta temporária (temp folder) com o nome especificado em my_strig.
+         # ---------------------------------------------
             if not os.path.isdir(my_strig):
                 os.mkdir(my_strig)
                 #os.mkdir('c:\\temp_sst\\'+my_strig)
 
 
         def __return_pandas_database__(my_dir):
+         #--------------------------------------------------------------------------------
+         # responsável por conectar-se a um banco de dados Microsoft Access (.mdb ou .accdb) localizado em um diretório especificado por my_dir, executar uma consulta SQL nesse banco de dados e retornar os resultados como um DataFrame do Pandas. 
+         # Parâmetros: diretório especificado por my_dir
+         # Retorna: DataFrame data contendo os resultados da consulta é retornado como resultado da função. O usuário que chama essa função receberá os dados em formato de DataFrame, que é uma estrutura de dados tabular do Pandas.
+         #---------------------------------------------------------------------------------
             conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' +my_dir + '\\DTUMeta.mdb;')
             my_query = 'SELECT\
                           Client.Group AS CLIENTE,\
@@ -310,9 +318,14 @@ class GerarApresentacao:
                 data = pd.read_sql(my_query,conn)
             return data
 
-        #Colocar aqui para extrair todos os dados na pasta temporário criada. A estrutura de pastas deve ser criada lá, a função deve ter um parametro caso usuário queira ou que seja criado num diretorio conhecido por ele.
+       
 
         def __extract_mdb__(dir_sst:str):
+         #----------------------------------------------------------------------------
+         #  responsável por extrair dados de um arquivo ZIP localizado em dir_sst, que supostamente contém um arquivo Microsoft Access Database (.mdb). 
+         # Parâmetro: dir_sst,  Uma string que representa o caminho para o arquivo ZIP que contém o arquivo MDB a ser extraído e lido.
+         # Retorno: Um DataFrame do Pandas contendo os dados lidos do arquivo MDB extraído do arquivo ZIP.
+         #-----------------------------------------------------------------------------
             if "\\" in dir_sst:
                 temp_sep = "\\"
             else:
@@ -331,6 +344,9 @@ class GerarApresentacao:
             return dados
 
         def __arruma_pandas__(my_data_frame,temp_sep):
+         #----------------------------------------------------------------------------------
+         # Organiza o dataframe
+         #----------------------------------------------------------------------------------
             data_frame = my_data_frame
             data_frame['ANO'] = data_frame['DIR_ANO'].str.split(pat="\\")[0][0]
             data_frame['NOME_REAL'] = data_frame['NOME_REAL']
@@ -359,8 +375,8 @@ class GerarApresentacao:
 
         def __rename_file_zip__(diretorio,temp_df):
         #---------------------------------------------------
-        # Retorna uma lista com todos os aquivos da pasta e sub
-        # pastas de acardo com o parametro list_extensions.
+        # responsável por renomear arquivos em um diretório com base em informações contidas em um DataFrame temp_df. Vou explicar os parâmetros e o que a função faz:
+        # Parâmetros: diretorio e temp_df
         #-----------------------------------------------------
             names = temp_df['COVERSAO'].tolist()
             temp = __return_dir__(diretorio)
