@@ -1,4 +1,3 @@
-# PlUG IN GERAÇÃO DE APRESENTAÇÃO
 ## 1. CONTEXTUALIZAÇÃO
 
 A criação deste plugin exclusivo, compatível com o QGIS versão 3.28 e versões posteriores, surgiu como uma resposta direta à demanda por otimização na rotina de geração de apresentações de mapas de fertilidade no Departamento de Geoprocessamento da Terram Soluções Agronômicas.
@@ -73,7 +72,28 @@ A tela foi projetada com o objetivo de acompanhar e facilitar o fluxo de trabalh
 
 ![Imagem5](https://github.com/SouzaVI/GERAR-APRESENTACAO/assets/98165012/360751a4-ab3d-404e-b987-09a4bb1e596b)
 
+### 3.3 Instruções em vídeo
 
+#### 3.3.1 Caminho de pastas e instalação dos pré- requisitos
+
+https://github.com/SouzaVI/GERAR-APRESENTACAO/assets/98165012/1914521e-9d61-4cf5-b8d2-91e945f28b54
+
+
+#### 3.3.2 Usando o plug in
+
+https://github.com/SouzaVI/GERAR-APRESENTACAO/assets/98165012/7104ab97-bb4a-4c9c-a5a2-6a0be88b7f81
+
+#### 3.3.3 Alteração no projeto
+
+Vamos considerar uma situação em que você precise modificar algum atributo ou o layout de um projeto relacionado à fertilidade. Nesse caso, siga os passos apresentados no vídeo abaixo.
+
+https://github.com/SouzaVI/GERAR-APRESENTACAO/assets/98165012/d1b7df09-1f09-4669-9517-c7e42c472840
+
+**OBSERVAÇÕES: Se você precisar fazer modificações no layout principal, como alterar a posição dos nomes dos talhões, hectares ou o tamanho do mapa no layout. Lembre-se de que você já gerou o layout anteriormente, então, neste caso, você só precisa editar o layout já criado (projeto salvo dentro das pasta, como LAYOUT), salvar as alterações e, em seguida, seguir o procedimento padrão  (ver no tópico anterior 3.3.2 em 0:32 s).**
+
+### 3.4 Casos Particulares
+
+Em situações em que o DTU apresente dois padrões (Abertura e Lavoura) com uma profundidade comum de 20 a 40 cm, é essencial exportar DTUs separadamente para cada padrão. Isso se justifica pelo fato de que, ao descompactar o DTU de 20 a 40 cm, ele será duplicado no projeto, resultando em sobreposições de atributos de fertilidade na visualização final.
 
 
 
