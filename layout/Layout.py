@@ -430,7 +430,7 @@ class GerarApresentacao:
         # a função que cria uma estrutura de diretórios, extrai arquivos de um objeto ZIP para essa estrutura de diretórios e retorna o diretório onde os arquivos foram extraídos.
         # Parâmetros: dir_sst, df_temp, my_zip_memory 
         # Retorno: A função retorna uma string que representa o diretório onde os arquivos do objeto my_zip_memory foram extraídos.
-         #----------------------------------------------------------------
+        #----------------------------------------------------------------
             temp = __return_dir__(dir_sst)
             if "\\" in dir_sst:
                 temp_sep = "\\"
