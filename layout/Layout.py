@@ -463,7 +463,6 @@ class GerarApresentacao:
          A função tem a finalidade de realizar uma série de operações, descompactando o conteúdo desse arquivo ZIP e organizando-o em uma estrutura de pastas específica.
          Parâmetros: my_folder
          Retorno: Retorna o caminho para o diretório onde os dados extraídos foram organizados. 
-         
          '''
             list_files= __get_list_files__(my_folder,('.sst'))
             print(list_files)
@@ -473,7 +472,6 @@ class GerarApresentacao:
 
 
         caminho_arquivos = descompactar_varios_dtus('C:/geoprocessamento/FERTILIDADE')
-
         '''
         Mensagem de conclusão da função descompactar
         '''
@@ -571,8 +569,6 @@ class GerarApresentacao:
         def CriarLayout():
          '''
          A função CriarLayout é responsável por criar um layout de impressão no QGIS, adicionando um mapa e uma legenda a esse layout.
-         
-         
          '''
             ##CRIANDO LAYOUT DE IMPRESSAO
             project = QgsProject.instance()
@@ -628,6 +624,9 @@ class GerarApresentacao:
         
         
     def SalvarProjetos(self):
+     '''
+     Retorna: executar função de descompactação de DTU, Função implementada para o botão pushButtonProjeto
+     '''
         from qgis.core import QgsField, QgsVectorLayer, QgsFeature, QgsExpression, QgsExpressionContext, QgsAggregateCalculator, QgsExpression,QgsExpressionContext, edit
         #from qgis.gui import QgsRendererRangeLabelFormat
         from qgis.core import QgsVectorLayer, QgsProject, QgsLayoutSize, QgsUnitTypes, QgsLayoutPoint, QgsLayoutItemLegend, QgsLegendStyle, QgsLayoutItemMap, QgsPrintLayout, QgsAggregateCalculator
@@ -656,6 +655,9 @@ class GerarApresentacao:
 
 
         def move_layer_to_top(parte_da_string):
+         '''
+         A função move_layer_to_top(parte_da_string) tem a finalidade de mover uma camada específica para o topo da hierarquia de camadas no projeto do QGIS
+         '''
             # Procurar pela camada que contém a parte específica da string no nome
             alayer = None
             map_layers = QgsProject.instance().mapLayers().values()
@@ -676,6 +678,11 @@ class GerarApresentacao:
                 print("Camada não encontrada.")
                 
         def ChamarAtributos(shapefile_dir, name=str, new_name=str):
+         '''
+         A função ChamarAtributos(shapefile_dir, name=str, new_name=str) tem como objetivo carregar um arquivo shapefile no QGIS, verificar se o carregamento foi bem-sucedido,
+         adicionar o layer resultante ao projeto do QGIS e renomear o layer.
+         Parâmetros: shapefile_dir, O diretório onde o arquivo shapefile está localizado; name, O nome do arquivo shapefile (sem a extensão ".shp") que você deseja carregar; new_name;  O novo nome que você deseja atribuir ao layer.
+         '''
             # Nome do arquivo a ser filtrado
             nome_arquivo = name
 
@@ -702,6 +709,9 @@ class GerarApresentacao:
 
 
         def OcultarLegendaLayout():
+         '''
+         A função OcultarLegendaLayout é usada para ocultar uma parte específica da legenda em um layout de impressão no QGIS
+         '''
             layout = QgsProject.instance().layoutManager().layoutByName("FERTILIDADE")
 
             if layout is not None:
@@ -729,6 +739,9 @@ class GerarApresentacao:
                 print("Layout não encontrado.")
 
         def HabilitarLegendaLayout():
+         '''
+         A função HabilitarLegendaLayout é usada para Habilitar uma parte específica da legenda em um layout de impressão no QGIS
+         '''
             layout = QgsProject.instance().layoutManager().layoutByName("FERTILIDADE")
 
             if layout is not None:
@@ -757,6 +770,10 @@ class GerarApresentacao:
                 print("Layout não encontrado.")
                 
         def LegendasAtributos(atributo = str, style = str):
+         '''
+          função que lida com a estilização e ocultação da legenda de um layer específico em um projeto QGIS.
+          Parâmetros: atributo, : O nome do layer que você deseja estilizar e ocultar na legenda. O layer é obtido usando QgsProject().instance().mapLayersByName(atributo)[0]; style,  O nome do arquivo de estilo que será aplicado ao layer. O estilo deve estar localizado no diretório "C:/geoprocessamento/estilos/". O estilo é carregado usando layer.loadNamedStyle();
+         '''
             layer = QgsProject().instance().mapLayersByName(atributo)[0]
             layer.loadNamedStyle('C:/geoprocessamento/estilos/'+ style)
             layer.triggerRepaint()
