@@ -373,10 +373,10 @@ class GerarApresentacao:
 
 
         def __rename_file_zip__(diretorio,temp_df):
-        #---------------------------------------------------
-        # responsável por renomear arquivos em um diretório com base em informações contidas em um DataFrame temp_df. Vou explicar os parâmetros e o que a função faz:
-        # Parâmetros: diretorio e temp_df
-        #-----------------------------------------------------
+         '''
+         responsável por renomear arquivos em um diretório com base em informações contidas em um DataFrame temp_df. Vou explicar os parâmetros e o que a função faz:
+         Parâmetros: diretorio e temp_df
+        '''
             names = temp_df['COVERSAO'].tolist()
             temp = __return_dir__(diretorio)
             diretorio = temp+ temp_df['DIRETORIO'][0]
@@ -403,11 +403,11 @@ class GerarApresentacao:
 
 
         def __return_dir__(directory_file_sst:str):
-         #-----------------------------------------------------------------------------
-         # função que recebe uma string directory_file_sst como argumento e retorna uma versão modificada dessa string.
-         # Parâmetros: directory_file_sst (string), Esta é a string que a função recebe como entrada. Presumivelmente, deve conter um caminho de diretório que pode usar barras invertidas (\) ou barras normais (/) como separadores.
-         # Retorno:  função retorna uma string que representa o diretório pai do caminho especificado em directory_file_sst. Isso significa que ele remove o último elemento (geralmente um nome de arquivo) do caminho fornecido e retorna apenas o caminho do diretório que o contém.
-         #------------------------------------------------------------------------------
+         '''
+          função que recebe uma string directory_file_sst como argumento e retorna uma versão modificada dessa string.
+          Parâmetros: directory_file_sst (string), Esta é a string que a função recebe como entrada. Presumivelmente, deve conter um caminho de diretório que pode usar barras invertidas (\) ou barras normais (/) como separadores.
+          Retorno:  função retorna uma string que representa o diretório pai do caminho especificado em directory_file_sst. Isso significa que ele remove o último elemento (geralmente um nome de arquivo) do caminho fornecido e retorna apenas o caminho do diretório que o contém.
+         '''
             if "\\" in directory_file_sst:
                 temp_list = directory_file_sst.split("\\")
                 temp_sep = "\\"
@@ -425,11 +425,11 @@ class GerarApresentacao:
         print(__return_dir__('C:/geoprocessamento/FERTILIDADE'))
 
         def __create_folder_structure__(dir_sst, df_temp, my_zip_memory):
-        #----------------------------------------------------------------
-        # a função que cria uma estrutura de diretórios, extrai arquivos de um objeto ZIP para essa estrutura de diretórios e retorna o diretório onde os arquivos foram extraídos.
-        # Parâmetros: dir_sst, df_temp, my_zip_memory 
-        # Retorno: A função retorna uma string que representa o diretório onde os arquivos do objeto my_zip_memory foram extraídos.
-        #----------------------------------------------------------------
+         '''
+         a função que cria uma estrutura de diretórios, extrai arquivos de um objeto ZIP para essa estrutura de diretórios e retorna o diretório onde os arquivos foram extraídos.
+         Parâmetros: dir_sst, df_temp, my_zip_memory 
+         Retorno: A função retorna uma string que representa o diretório onde os arquivos do objeto my_zip_memory foram extraídos.
+        '''
             temp = __return_dir__(dir_sst)
             if "\\" in dir_sst:
                 temp_sep = "\\"
