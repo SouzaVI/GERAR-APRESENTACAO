@@ -227,7 +227,7 @@ class GerarApresentacao:
         import os
         #-------------------------------------------------------------------------------------------------
         # Retorna: executar função de descompactação de DTU, Função implementada para o botão pushButtonDtu
-        # Parâmetros: __get_list_files__(diretorio, list_extensions)
+        # 
         #-------------------------------------------------------------------------------------------------
 
         def __get_list_files__(diretorio, list_extensions):
@@ -444,6 +444,11 @@ class GerarApresentacao:
         
 
         def descompatar_sst(dados):
+         '''
+         A função tem a finalidade de realizar uma série de operações, descompactando o conteúdo desse arquivo ZIP e organizando-o em uma estrutura de pastas específica. 
+         Parâmetros: Dados
+         Retorno: Retorna o caminho para o diretório onde os dados extraídos foram organizados.
+         '''
             dados_sst = zipfile.ZipFile(dados)
             if "\\" in dados:
                 temp_sep = "\\"
@@ -455,6 +460,12 @@ class GerarApresentacao:
             return diretorio
 
         def descompactar_varios_dtus(my_folder:str):
+         '''
+         A função tem a finalidade de realizar uma série de operações, descompactando o conteúdo desse arquivo ZIP e organizando-o em uma estrutura de pastas específica.
+         Parâmetros: my_folder
+         Retorno: Retorna o caminho para o diretório onde os dados extraídos foram organizados. 
+         
+         '''
             list_files= __get_list_files__(my_folder,('.sst'))
             print(list_files)
             for idx, item in enumerate(list_files):
@@ -463,6 +474,10 @@ class GerarApresentacao:
 
 
         caminho_arquivos = descompactar_varios_dtus('C:/geoprocessamento/FERTILIDADE')
+
+        '''
+        Mensagem de conclusão da função descompactar
+        '''
         from PyQt5.QtWidgets import QMessageBox
         # Exibindo a caixa de diálogo após a conclusão da função
         msg_box = QMessageBox()
@@ -472,6 +487,9 @@ class GerarApresentacao:
         msg_box.exec_()
         
     def GerarLayout(self):
+     '''
+     Retorna: executar função de descompactação de DTU, Função implementada para o botão pushButtonGerarLayout
+     '''
     
         from qgis.core import QgsVectorLayer, QgsProject, QgsLayoutSize, QgsUnitTypes, QgsLayoutPoint, QgsLayoutItemLegend, QgsLegendStyle, QgsLayoutItemMap, QgsPrintLayout, QgsAggregateCalculator,  QgsExpression, QgsExpressionContext, QgsAggregateCalculator, QgsExpression,QgsExpressionContext, edit
         from PyQt5.QtGui import QColor, QFont
@@ -484,6 +502,9 @@ class GerarApresentacao:
         shapefile_dir = self.pasta
 
         def ChamarLayerLayout(shapefile_dir, name=str, estilo=str):
+         '''
+         Parâmetros: shapefile_dir, O diretório onde o arquivo shapefile está localizado; name, O nome do arquivo shapefile (sem a extensão ".shp"); estilo, O nome do arquivo de estilo que será aplicado ao shapefile. Esse arquivo de estilo deve estar localizado no diretório "C:/geoprocessamento/estilos/".
+         '''
             # Nome do arquivo a ser filtrado
             nome_arquivo = name
 
