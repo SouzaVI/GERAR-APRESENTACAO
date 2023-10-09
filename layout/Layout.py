@@ -993,6 +993,10 @@ class GerarApresentacao:
 
   
         def CtcArgila(layer = str, estilo = str):
+         '''
+         A função CtcArgila estar relacionada à estilização e configuração de um layer no QGIS.
+         Parâmetros: layer, O nome do layer que será estilizado e configurado;estilo, O nome do arquivo de estilo (QML) que será aplicado ao layer. 
+         '''
             layer = QgsProject.instance().mapLayersByName(layer)[0]
             
             # Load the style from the QML file
