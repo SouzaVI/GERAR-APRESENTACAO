@@ -504,6 +504,9 @@ class GerarApresentacao:
         def ChamarLayerLayout(shapefile_dir, name=str, estilo=str):
          '''
          Parâmetros: shapefile_dir, O diretório onde o arquivo shapefile está localizado; name, O nome do arquivo shapefile (sem a extensão ".shp"); estilo, O nome do arquivo de estilo que será aplicado ao shapefile. Esse arquivo de estilo deve estar localizado no diretório "C:/geoprocessamento/estilos/".
+         Retorno: A função não retorna um valor explícito. Em vez disso, ela executa uma série de ações, como carregar o shapefile no QGIS, aplicar estilos,
+         calcular a soma da coluna "HECTARES", criar um novo campo 'IDHA' com auto-incremento (se ainda não existir), duplicar o layer e adicionar ambos os layers ao projeto do QGIS. 
+         Durante a execução, a função imprime mensagens informativas no console para indicar o progresso e resultados das operações.
          '''
             # Nome do arquivo a ser filtrado
             nome_arquivo = name
@@ -559,7 +562,7 @@ class GerarApresentacao:
             duplicated_layer.loadNamedStyle('C:/geoprocessamento/estilos/' + 'hectares.qml')
             duplicated_layer.triggerRepaint()
 
-            # ... (rest of the existing code for calculations, updating, and adding to project)
+          
 
             # Add the duplicated layer to the project
             QgsProject.instance().addMapLayer(duplicated_layer)
@@ -567,6 +570,11 @@ class GerarApresentacao:
         ChamarLayerLayout(shapefile_dir, name = 'Field_1', estilo = 'talhao.qml')
 
         def CriarLayout():
+         '''
+         A função CriarLayout é responsável por criar um layout de impressão no QGIS, adicionando um mapa e uma legenda a esse layout.
+         
+         
+         '''
             ##CRIANDO LAYOUT DE IMPRESSAO
             project = QgsProject.instance()
             manager = project.layoutManager()
@@ -604,6 +612,9 @@ class GerarApresentacao:
         CriarLayout()
 
         def save_qgis_project(project_path):
+         '''
+         A Função Salva o projeto atual como LAYOUT
+         '''
             # Get the current QGIS project instance
             qgis_project = QgsProject.instance()
 
