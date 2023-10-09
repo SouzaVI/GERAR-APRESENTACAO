@@ -225,18 +225,16 @@ class GerarApresentacao:
         from os import path
         import uuid
         import os
-        #-------------------------------------------------------------------------------------------------
-        # Retorna: executar função de descompactação de DTU, Função implementada para o botão pushButtonDtu
-        # 
-        #-------------------------------------------------------------------------------------------------
+     '''
+      Retorna: executar função de descompactação de DTU, Função implementada para o botão pushButtonDtu
+     '''   
 
         def __get_list_files__(diretorio, list_extensions):
-         
-        #---------------------------------------------------------------------------------
-        # Essa função, chamada __get_list_files__, tem a finalidade de listar arquivos com extensões específicas em um diretório e suas subpastas recursivamente.
-        # Parâmetros: Diretorio (O diretório inicial onde a busca de arquivos será realizada)  e list_extensions (Uma lista de extensões de arquivo que você deseja procurar)
-        # Retorna: retorna a lista lst_dir, que contém os caminhos de todos os arquivos encontrados no diretório e suas subpastas.
-        #---------------------------------------------------------------------------------
+         '''
+         Essa função, chamada __get_list_files__, tem a finalidade de listar arquivos com extensões específicas em um diretório e suas subpastas recursivamente.
+         Parâmetros: Diretorio (O diretório inicial onde a busca de arquivos será realizada)  e list_extensions (Uma lista de extensões de arquivo que você deseja procurar)
+         Retorna: retorna a lista lst_dir, que contém os caminhos de todos os arquivos encontrados no diretório e suas subpastas.
+        '''
             lst_dir = []
             tot = 0
             subpastas =[]
@@ -262,11 +260,11 @@ class GerarApresentacao:
                 return lst_dir
 
         def __create_folder__(my_dir:str):
-         #---------------------------------------------------------
-         # tem a finalidade de criar uma estrutura de diretórios em um caminho específico, onde os diretórios são definidos com base na string fornecida como my_dir
-         # Parâmetros :  my_dir, que é uma string representando o caminho do diretório que você deseja criar.
-         # Retorna: Após a conclusão do loop, a estrutura de diretórios definida pelo caminho my_dir foi criada, com cada diretório individual criado conforme necessário.
-         #--------------------------------------------------------
+         '''
+          tem a finalidade de criar uma estrutura de diretórios em um caminho específico, onde os diretórios são definidos com base na string fornecida como my_dir
+          Parâmetros :  my_dir, que é uma string representando o caminho do diretório que você deseja criar.
+          Retorna: Após a conclusão do loop, a estrutura de diretórios definida pelo caminho my_dir foi criada, com cada diretório individual criado conforme necessário. 
+         '''
             path = my_dir
             new_path=''
             if not os.path.isdir(path):
@@ -281,20 +279,21 @@ class GerarApresentacao:
                             os.mkdir(new_path)
 
         def __create_temp_folder__(my_strig:str):
-         #----------------------------------------------
-         #  cria uma pasta temporária (temp folder) com o nome especificado em my_strig.
-         # ---------------------------------------------
+         '''
+         cria uma pasta temporária (temp folder) com o nome especificado em my_strig.
+         '''
             if not os.path.isdir(my_strig):
                 os.mkdir(my_strig)
                 #os.mkdir('c:\\temp_sst\\'+my_strig)
 
 
         def __return_pandas_database__(my_dir):
-         #--------------------------------------------------------------------------------
-         # responsável por conectar-se a um banco de dados Microsoft Access (.mdb ou .accdb) localizado em um diretório especificado por my_dir, executar uma consulta SQL nesse banco de dados e retornar os resultados como um DataFrame do Pandas. 
-         # Parâmetros: diretório especificado por my_dir
-         # Retorna: DataFrame data contendo os resultados da consulta é retornado como resultado da função. O usuário que chama essa função receberá os dados em formato de DataFrame, que é uma estrutura de dados tabular do Pandas.
-         #---------------------------------------------------------------------------------
+         '''
+          responsável por conectar-se a um banco de dados Microsoft Access (.mdb ou .accdb) localizado em um diretório especificado por my_dir, executar uma consulta SQL nesse banco de dados e retornar os resultados como um DataFrame do Pandas. 
+          Parâmetros: diretório especificado por my_dir
+          Retorna: DataFrame data contendo os resultados da consulta é retornado como resultado da função. O usuário que chama essa função receberá os dados em formato de DataFrame, que é uma estrutura de dados tabular do Pandas.
+         
+         '''
             conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' +my_dir + '\\DTUMeta.mdb;')
             my_query = 'SELECT\
                           Client.Group AS CLIENTE,\
@@ -321,11 +320,11 @@ class GerarApresentacao:
        
 
         def __extract_mdb__(dir_sst:str):
-         #----------------------------------------------------------------------------
-         #  responsável por extrair dados de um arquivo ZIP localizado em dir_sst, que supostamente contém um arquivo Microsoft Access Database (.mdb). 
-         # Parâmetro: dir_sst,  Uma string que representa o caminho para o arquivo ZIP que contém o arquivo MDB a ser extraído e lido.
-         # Retorno: Um DataFrame do Pandas contendo os dados lidos do arquivo MDB extraído do arquivo ZIP.
-         #-----------------------------------------------------------------------------
+         '''
+          responsável por extrair dados de um arquivo ZIP localizado em dir_sst, que supostamente contém um arquivo Microsoft Access Database (.mdb). 
+          Parâmetro: dir_sst,  Uma string que representa o caminho para o arquivo ZIP que contém o arquivo MDB a ser extraído e lido.
+          Retorno: Um DataFrame do Pandas contendo os dados lidos do arquivo MDB extraído do arquivo ZIP.
+         '''
             if "\\" in dir_sst:
                 temp_sep = "\\"
             else:
@@ -344,9 +343,9 @@ class GerarApresentacao:
             return dados
 
         def __arruma_pandas__(my_data_frame,temp_sep):
-         #----------------------------------------------------------------------------------
-         # Organiza o dataframe
-         #----------------------------------------------------------------------------------
+         '''
+         Organiza o dataframe
+         '''
             data_frame = my_data_frame
             data_frame['ANO'] = data_frame['DIR_ANO'].str.split(pat="\\")[0][0]
             data_frame['NOME_REAL'] = data_frame['NOME_REAL']
