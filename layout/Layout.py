@@ -1177,7 +1177,11 @@ class GerarApresentacao:
         msg_box.setText("O processo de Salvar os Projetos finalizado com sucesso!")
         msg_box.setIcon(QMessageBox.Information)
         msg_box.exec_()
+
     def  ExportarImagem(self):
+     '''
+     Retorna: executar função de Exportar imagens, Função implementada para o botão pushButtonImagem
+     '''
         from PyQt5.QtWidgets import QFileDialog
         import os
         import processing
@@ -1187,6 +1191,11 @@ class GerarApresentacao:
         folderpath  = self.pasta  
         outputpath = self.pasta  
         def ExportarMapas():
+         '''
+         Realiza a exportação de mapas a partir de projetos do software QGIS
+         Parâmetros: folderpath e outputpath
+         Retorno:  executa operações de exportação de layouts de mapas para arquivos de imagem (PNG) ou PDF com base nas configurações e nos arquivos encontrados no diretório especificado.
+         '''
             for root, dirs, files in os.walk (folderpath):
                 for file in files:
                     if file.endswith ('.qgz') or file.endswith ('.qgs'):
@@ -1254,7 +1263,9 @@ class GerarApresentacao:
     
     
     def GerarApresentacao(self):
-    
+    '''
+    Retorna: executar função de Gerar apresentação, Função implementada para o botão pushButtonGerarApresentacao
+    '''
         from PyQt5.QtWidgets import QFileDialog
         import os
         import processing
